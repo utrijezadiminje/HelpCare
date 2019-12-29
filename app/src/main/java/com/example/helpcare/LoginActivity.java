@@ -17,6 +17,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText Password;
     private Button Login;
     private TextView Tw;
+    private TextView Reg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         Password=findViewById(R.id.etPassword);
         Login =findViewById(R.id.btnLogin);
         Tw=findViewById(R.id.textView);
+        Reg=findViewById(R.id.textView2);
         Tw.setVisibility(View.GONE);
         Password.addTextChangedListener(new TextWatcher() {
             @Override
@@ -66,7 +68,13 @@ public class LoginActivity extends AppCompatActivity {
                 val(Name.getText().toString(),Password.getText().toString());
             }
         });
-
+        Reg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     private void val(String userN,String userP){
         if((userN.equals("Admin")) && (userP.equals("123"))) {
@@ -74,4 +82,5 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
 }

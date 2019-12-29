@@ -10,11 +10,10 @@
         android:id="@+id/etUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
         android:ems="10"
         android:hint="Korisničko Ime"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/etPassword"
+        app:layout_constraintBottom_toTopOf="@+id/etPassword1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,43 +23,39 @@
         android:id="@+id/etPassword1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="216dp"
         android:ems="10"
         android:hint="Lozinka"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/etPassword"
+        app:layout_constraintBottom_toTopOf="@+id/etPassword2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.897" />
+        app:layout_constraintVertical_bias="0.922" />
 
     <EditText
         android:id="@+id/etPassword2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="284dp"
-        android:layout_marginBottom="380dp"
+        android:layout_marginBottom="44dp"
         android:ems="10"
         android:hint="Ponovite Lozinku"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/etPassword"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.897" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnRegister"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="328dp"
         android:text="REGISTRUJ SE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword"
-        app:layout_constraintVertical_bias="0.094" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
