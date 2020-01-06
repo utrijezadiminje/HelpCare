@@ -13,6 +13,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText Password2;
     private Button Register;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
