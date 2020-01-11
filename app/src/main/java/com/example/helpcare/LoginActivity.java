@@ -78,8 +78,8 @@ public class LoginActivity extends AppCompatActivity {
     }
     private void val(String username, String password){
         String cmd = "login";
-        Database databaseLogin = new Database(this);
-        databaseLogin.execute(cmd, username, password);
+        Database database = new Database(this);
+        database.execute(cmd, username, password);
         /*
         if((userN.equals("Admin")) && (userP.equals("123"))) {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
