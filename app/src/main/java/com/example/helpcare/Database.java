@@ -26,7 +26,7 @@ class DatabaseLogin extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... params) {
         String type = params[0];
-        String login_url = "http://192.168.42.90/login.php";
+        String login_url = "https://webdatabaseandroid.000webhostapp.com/login.php";
 
         if(type.equals("login")) {
             try {
@@ -107,7 +107,7 @@ class DatabaseRegister extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... params) {
         String type = params[0];
-        String register_url = "http://192.168.42.90/register.php";
+        String register_url = "https://webdatabaseandroid.000webhostapp.com/register.php";
 
         if(type.equals("register")) {
             try {
