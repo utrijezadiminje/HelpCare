@@ -152,7 +152,6 @@ class Database extends AsyncTask<String,Void,String> {
             }
             else {
                 // U OVAJ ELSE STAVLJAS SVE STA HOCES DA SE DESI AKO JE KORISNICKO IME ILI SIFRA NETACNA
-                Context context = context.getApplicationContext();
                 CharSequence text = "NEISPRAVNO KORISNIČKO IME ILI LOZINKA";
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);
