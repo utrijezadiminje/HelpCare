@@ -19,8 +19,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 class Database extends AsyncTask<String,Void,String> {
-    String h;
-
+    String konekcija = "";
     Context context;
 
     AlertDialog alertDialog;
@@ -30,7 +29,6 @@ class Database extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... params) {
         String cmd = params[0];
-        h = cmd;
         String login_url = "https://webdatabaseandroid.000webhostapp.com/login.php";
         String register_url = "https://webdatabaseandroid.000webhostapp.com/register.php";
 
@@ -62,13 +60,13 @@ class Database extends AsyncTask<String,Void,String> {
 
                 String result="";
                 String line="";
-                while((line = bufferedReader.readLine())!= null) result += line;
+                while((line = bufferedReader.readLine())!= null) konekcija += line;
 
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
 
-                return result;
+                return konekcija;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -102,15 +100,14 @@ class Database extends AsyncTask<String,Void,String> {
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
 
-                String result="";
                 String line="";
-                while((line = bufferedReader.readLine())!= null) result += line;
+                while((line = bufferedReader.readLine())!= null) konekcija += line;
 
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
 
-                return result;
+                return konekcija;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -118,60 +115,43 @@ class Database extends AsyncTask<String,Void,String> {
             }
         }
 
-        return null;
+        return konekcija;
     }
 
     @Override
     protected void onPreExecute() {
-        /*
-        alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle("Login status");
-        */
     }
 
-    /*
-###########################################################################################################################################
-###########################################################################################################################################
-###########################################################################################################################################
-    */
-
-    // === OVDE ISPOD PODESAVAS ===
-
     @Override
-    protected void onPostExecute(String result) {
-        /*
-        alertDialog.setMessage(result);
-        alertDialog.show();
-        */
-
-        if(h.equals("login")) {
-            if(result.equals("Ltrue")) {
-                // U OVAJ IF STAVLJAS SVE STA HOCES DA SE DESI KADA SE KORISNIK ULOGUJE U APP
-                Intent intent = new Intent(context, MainActivity.class);
-                context.startActivity(intent);
-            }
-            else {
-                // U OVAJ ELSE STAVLJAS SVE STA HOCES DA SE DESI AKO JE KORISNICKO IME ILI SIFRA NETACNA
-                CharSequence text = "NEISPRAVNO KORISNIČKO IME ILI LOZINKA";
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-            }
+    protected void onPostExecute(String konekcija) {
+        if(konekcija.equals("Ltrue")) {
+            Intent intent = new Intent(context, MainActivity.class);
+            context.startActivity(intent);
         }
+        else if(konekcija.equals("Lfalseu")) {
+            CharSequence text = "Korisnik nije pronadjen";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else if(konekcija.equals("Lfalsep")) {
+            CharSequence text = "Pogresna lozinka";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else if(konekcija.equals("Rtrue")) {
 
+        }
+        else if(konekcija.equals("Rfalse")){
+
+        }
         else {
-            if(result.equals("Rtrue")) {
-                // U OVAJ IF STAVLJAS STA CE DA SE DESI KADA SE KORISNIK USPESNO REGISTRUJE
-
-
-            }
-            else {
-                // U OVAJ ELSE STAVLJAS SVE STA HOCES DA SE DESI AKO JE DOSLO DO GRESKE PRILIKOM REGISTRACIJI KORISNIKA
-
-
-            }
+            CharSequence text = "Nema interneta";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
         }
-
     }
 
     @Override
