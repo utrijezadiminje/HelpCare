@@ -5,13 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.jar.Attributes;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -35,12 +34,17 @@ public class RegisterActivity extends AppCompatActivity {
         Spinner =findViewById(R.id.spinner);
         Register=findViewById(R.id.btnRegister);
         LogIn=findViewById(R.id.login);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.type, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner.setAdapter(adapter);
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String username = Username.getText().toString();
                 String pass1 = Password.getText().toString();
                 String pass2 = Password2.getText().toString();
+                String type = Spinner.
                 if (pass1.equals(pass2)) {
                     val(username, pass1);
                 }
@@ -54,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private void val(String username, String password){
+    private void val(String username, String password, Integer type){
         String cmd = "register";
         Database database = new Database(this);
         database.execute(cmd, username, password);
