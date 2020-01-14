@@ -129,13 +129,13 @@ class Database extends AsyncTask<String,Void,String> {
             context.startActivity(intent);
         }
         else if(konekcija.equals("Lfalseu")) {
-            CharSequence text = "Korisnik nije pronadjen";
+            CharSequence text = "KORISNIK NIJE PRONAĐEN";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
         else if(konekcija.equals("Lfalsep")) {
-            CharSequence text = "Pogresna lozinka";
+            CharSequence text = "POGREŠNA LOZINKA";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
@@ -145,19 +145,19 @@ class Database extends AsyncTask<String,Void,String> {
             context.startActivity(intent);
         }
         else if(konekcija.equals("RfalseU")) {
-            CharSequence text = "Korisnicko ime je zauzeto";
+            CharSequence text = "KORISNIČKO IME JE ZAUZETO";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
         else if(konekcija.equals("Rfalse")) {
-            CharSequence text = "Doslo je do greske";
+            CharSequence text = "DOŠLO JE DO GREŠKE";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
         else {
-            CharSequence text = "Nema interneta";
+            CharSequence text = "NEMA INTERNETA";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
