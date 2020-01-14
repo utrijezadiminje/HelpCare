@@ -141,10 +141,20 @@ class Database extends AsyncTask<String,Void,String> {
             toast.show();
         }
         else if(konekcija.equals("Rtrue")) {
-
+            Intent intent = new Intent(context, LoginActivity.class);
+            context.startActivity(intent);
         }
-        else if(konekcija.equals("Rfalse")){
-
+        else if(konekcija.equals("RfalseU")) {
+            CharSequence text = "Korisnicko ime je zauzeto";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else if(konekcija.equals("Rfalse")) {
+            CharSequence text = "Doslo je do greske";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
         }
         else {
             CharSequence text = "Nema interneta";
