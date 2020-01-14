@@ -2,6 +2,7 @@ package com.example.helpcare;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 
 import java.io.BufferedReader;
@@ -145,7 +146,8 @@ class Database extends AsyncTask<String,Void,String> {
         if(h.equals("login")) {
             if(result.equals("Ltrue")) {
                 // U OVAJ IF STAVLJAS SVE STA HOCES DA SE DESI KADA SE KORISNIK ULOGUHE U APP
-
+                Intent intent = new Intent(context, MainActivity.class);
+                context.startActivity(intent);
 
 
             }
