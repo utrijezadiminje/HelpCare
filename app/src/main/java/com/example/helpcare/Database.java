@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -145,17 +146,17 @@ class Database extends AsyncTask<String,Void,String> {
 
         if(h.equals("login")) {
             if(result.equals("Ltrue")) {
-                // U OVAJ IF STAVLJAS SVE STA HOCES DA SE DESI KADA SE KORISNIK ULOGUHE U APP
+                // U OVAJ IF STAVLJAS SVE STA HOCES DA SE DESI KADA SE KORISNIK ULOGUJE U APP
                 Intent intent = new Intent(context, MainActivity.class);
                 context.startActivity(intent);
-
-
             }
             else {
                 // U OVAJ ELSE STAVLJAS SVE STA HOCES DA SE DESI AKO JE KORISNICKO IME ILI SIFRA NETACNA
-
-
-
+                Context context = context.getApplicationContext();
+                CharSequence text = "NEISPRAVNO KORISNIČKO IME ILI LOZINKA";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
             }
         }
 
@@ -164,11 +165,9 @@ class Database extends AsyncTask<String,Void,String> {
                 // U OVAJ IF STAVLJAS STA CE DA SE DESI KADA SE KORISNIK USPESNO REGISTRUJE
 
 
-
             }
             else {
                 // U OVAJ ELSE STAVLJAS SVE STA HOCES DA SE DESI AKO JE DOSLO DO GRESKE PRILIKOM REGISTRACIJI KORISNIKA
-
 
 
             }
