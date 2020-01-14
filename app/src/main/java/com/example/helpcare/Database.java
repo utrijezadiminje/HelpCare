@@ -16,19 +16,23 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-class DatabaseLogin extends AsyncTask<String,Void,String> {
+class Database extends AsyncTask<String,Void,String> {
+    String h;
+
     Context context;
 
     AlertDialog alertDialog;
 
-    DatabaseLogin (Context ctx) { context = ctx; }
+    Database (Context ctx) { context = ctx; }
 
     @Override
     protected String doInBackground(String... params) {
-        String type = params[0];
-        String login_url = "http://192.168.42.90/login.php";
+        String cmd = params[0];
+        h = cmd;
+        String login_url = "https://webdatabaseandroid.000webhostapp.com/login.php";
+        String register_url = "https://webdatabaseandroid.000webhostapp.com/register.php";
 
-        if(type.equals("login")) {
+        if(cmd.equals("login")) {
             try {
                 String user_name = params[1];
                 String password = params[2];
@@ -70,46 +74,7 @@ class DatabaseLogin extends AsyncTask<String,Void,String> {
             }
         }
 
-        return null;
-    }
-
-    @Override
-    protected void onPreExecute() {
-        alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle("Login status");
-    }
-
-    @Override
-    protected void onPostExecute(String result) {
-        alertDialog.setMessage(result);
-        alertDialog.show();
-    }
-
-    @Override
-    protected void onProgressUpdate(Void... values) {
-        super.onProgressUpdate(values);
-    }
-}
-
-/*
-   **************************************************************************************************************************
-   **************************************************************************************************************************
-   **************************************************************************************************************************
-*/
-
-class DatabaseRegister extends AsyncTask<String,Void,String> {
-    Context context;
-
-    AlertDialog alertDialog;
-
-    DatabaseRegister (Context ctx) { context = ctx; }
-
-    @Override
-    protected String doInBackground(String... params) {
-        String type = params[0];
-        String register_url = "http://192.168.42.90/register.php";
-
-        if(type.equals("register")) {
+        else if(cmd.equals("register")) {
             try {
                 String username = params[1];
                 String password = params[2];
@@ -156,14 +121,57 @@ class DatabaseRegister extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPreExecute() {
+        /*
         alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle("Register status");
+        alertDialog.setTitle("Login status");
+        */
     }
+
+    /*
+###########################################################################################################################################
+###########################################################################################################################################
+###########################################################################################################################################
+    */
+
+    // === OVDE ISPOD PODESAVAS ===
 
     @Override
     protected void onPostExecute(String result) {
+        /*
         alertDialog.setMessage(result);
         alertDialog.show();
+        */
+
+        if(h.equals("login")) {
+            if(result.equals("Ltrue")) {
+                // U OVAJ IF STAVLJAS SVE STA HOCES DA SE DESI KADA SE KORISNIK ULOGUHE U APP
+
+
+
+            }
+            else {
+                // U OVAJ ELSE STAVLJAS SVE STA HOCES DA SE DESI AKO JE KORISNICKO IME ILI SIFRA NETACNA
+
+
+
+            }
+        }
+
+        else {
+            if(result.equals("Rtrue")) {
+                // U OVAJ IF STAVLJAS STA CE DA SE DESI KADA SE KORISNIK USPESNO REGISTRUJE
+
+
+
+            }
+            else {
+                // U OVAJ ELSE STAVLJAS SVE STA HOCES DA SE DESI AKO JE DOSLO DO GRESKE PRILIKOM REGISTRACIJI KORISNIKA
+
+
+
+            }
+        }
+
     }
 
     @Override

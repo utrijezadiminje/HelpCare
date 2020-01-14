@@ -76,16 +76,16 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    private void val(String userN, String userP){
+    private void val(String username, String password){
+        String cmd = "login";
+        Database database = new Database(this);
+        database.execute(cmd, username, password);
         /*
-        String type = "login";
-        DatabaseLogin databaseLogin = new DatabaseLogin(this);
-        databaseLogin.execute(type, username, password);
-        */
         if((userN.equals("Admin")) && (userP.equals("123"))) {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         }
+         */
     }
 
 }
