@@ -1,12 +1,15 @@
 package com.example.helpcare;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -16,15 +19,20 @@ public class LoginActivity extends AppCompatActivity {
     private EditText Name;
     private EditText Password;
     private TextView Tw;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Name = findViewById(R.id.etName);
+        Name.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(Name, InputMethodManager.SHOW_IMPLICIT);
         Password=findViewById(R.id.etPassword);
         Button Login =findViewById(R.id.btnLogin);
         Tw=findViewById(R.id.textView);
         TextView Reg=findViewById(R.id.textView2);
+        TextView admin=findViewById(R.id.textView3);
         Tw.setVisibility(View.GONE);
         Password.addTextChangedListener(new TextWatcher() {
             @Override
@@ -48,13 +56,13 @@ public class LoginActivity extends AppCompatActivity {
         Tw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Tw.getText()=="SHOW"){
-                    Tw.setText("HIDE");
+                if(Tw.getText()=="PRIKAŽI"){
+                    Tw.setText("SAKRIJ");
                     Password.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     Password.setSelection(Password.length());
                 }
                 else{
-                    Tw.setText("SHOW");
+                    Tw.setText("PRIKAŽI");
                     Password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     Password.setSelection(Password.length());
                 }
@@ -66,10 +74,19 @@ public class LoginActivity extends AppCompatActivity {
                 val(Name.getText().toString(),Password.getText().toString());
             }
         });
+
         Reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this,AdminActivity.class);
                 startActivity(intent);
             }
         });

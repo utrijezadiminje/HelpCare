@@ -17,7 +17,8 @@
         <activity android:name=".AdminActivity" />
         <activity android:name=".RegisterActivity"/>
         <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
