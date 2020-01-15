@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,16 +15,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
-
-    private Spinner Spinner;
     private EditText Username;
     private EditText Password;
     private EditText Password2;
-    private Button Register;
-    private TextView LogIn;
-
-    Context context;
-    RegisterActivity (Context ctx) { context = ctx; }
+    private int T;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +27,9 @@ public class RegisterActivity extends AppCompatActivity {
         Username = findViewById(R.id.etUsername);
         Password=findViewById(R.id.etPassword1);
         Password2=findViewById(R.id.etPassword2);
-        Spinner =findViewById(R.id.spinner);
-        Register=findViewById(R.id.btnRegister);
-        LogIn=findViewById(R.id.login);
+        Spinner Spinner =findViewById(R.id.spinner);
+        Button Register=findViewById(R.id.btnRegister);
+        TextView LogIn=findViewById(R.id.login);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.type, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -46,27 +41,36 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                T=i;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String username = Username.getText().toString();
                 String pass1 = Password.getText().toString();
                 String pass2 = Password2.getText().toString();
-                Integer type =  Spinner.getSelectedItemPosition();
                 if (pass1.equals(pass2)) {
-                    val(username, pass1, type);
+                    val(username, pass1, T);
                 }
                 else {
                     CharSequence text = "LOZINKE SE NE POKLAPAJU";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(context, text, duration);
+                    Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
                     toast.show();
                 }
             }
         });
     }
 
-    private void val(String username, String password, Integer type){
+    private void val(String username, String password, int type){
         String cmd = "register";
         Database database = new Database(this);
         database.execute(cmd, username, password);

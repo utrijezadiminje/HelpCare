@@ -15,7 +15,7 @@
         <activity android:name=".TeamActivity" />
         <activity android:name=".UserActivity" />
         <activity android:name=".AdminActivity" />
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".RegisterActivity"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>

@@ -15,18 +15,16 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText Name;
     private EditText Password;
-    private Button Login;
     private TextView Tw;
-    private TextView Reg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Name = findViewById(R.id.etName);
         Password=findViewById(R.id.etPassword);
-        Login =findViewById(R.id.btnLogin);
+        Button Login =findViewById(R.id.btnLogin);
         Tw=findViewById(R.id.textView);
-        Reg=findViewById(R.id.textView2);
+        TextView Reg=findViewById(R.id.textView2);
         Tw.setVisibility(View.GONE);
         Password.addTextChangedListener(new TextWatcher() {
             @Override
