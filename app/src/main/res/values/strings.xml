@@ -10,9 +10,13 @@
     <string name="invalid_password">"Password must be >5 characters"</string>
     <string name="login_failed">"Login failed"</string>
     <string-array name="type">
-        <item>Lekar Opšte Prakse</item> //0
-        <item>Medicinski Tehničar</item> //1
-        <item>Volonter</item> //2
-        <item>Administrator</item> //3
+        <item>Lekar Opšte Prakse</item>
+        //0
+        <item>Medicinski Tehničar</item>
+        //1
+        <item>Volonter</item>
+        //2
+        <item>Administrator</item>
+        //3
     </string-array>
 </resources>
