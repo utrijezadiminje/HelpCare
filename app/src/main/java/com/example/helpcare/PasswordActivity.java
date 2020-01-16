@@ -2,6 +2,7 @@ package com.example.helpcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,7 @@ public class PasswordActivity extends AppCompatActivity {
     private EditText Password1;
     private EditText Password2;
     private Button Change;
+    private Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +31,10 @@ public class PasswordActivity extends AppCompatActivity {
                 String Pass1 = Password1.getText().toString();
                 String Pass2 = Password2.getText().toString();
                 String OldPass = oldPassword.getText().toString();
-                if (Pass1.equals(Pass2) && OldPass.equals("123")) {
-                    //zameni Password
-                    //123 zameni za lozinkom iz baze
+                if (Pass1.equals(Pass2)) {
+                    String cmd = "newpass";
+                    Database database = new Database(this, ctx);
+                    database.execute(cmd, OldPass, Pass1);
                 } else if (!Pass1.equals(Pass2)) {
                     CharSequence text = "LOZINKE SE NE POKLAPAJU";
                     Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.view.View;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -27,17 +28,23 @@ class Database extends AsyncTask<String,Void,String> {
 
     Database (Context ctx) { context = ctx; }
 
+    Database(View.OnClickListener onClickListener, Context ctx) { context = ctx; }
+
     @Override
     protected String doInBackground(String... params) {
         String cmd = params[0];
 
         String login_url = "https://webdatabaseandroid.000webhostapp.com/login.php";
         String register_url = "https://webdatabaseandroid.000webhostapp.com/register.php";
+        String useri_url = "https://webdatabaseandroid.000webhostapp.com/useri.php";
+
+        String username;
+        String password;
 
         if(cmd.equals("login")) {
             try {
-                String user_name = params[1];
-                String password = params[2];
+                username = params[1];
+                password = params[2];
 
                 URL url = new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
@@ -49,7 +56,7 @@ class Database extends AsyncTask<String,Void,String> {
 
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
 
-                String post_data = URLEncoder.encode("user_name","UTF-8")+"="+URLEncoder.encode(user_name,"UTF-8")+"&"
+                String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"
                         +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8");
 
                 bufferedWriter.write(post_data);
@@ -73,12 +80,10 @@ class Database extends AsyncTask<String,Void,String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-
-        else if(cmd.equals("register")) {
+        } else if(cmd.equals("register")) {
             try {
-                String username = params[1];
-                String password = params[2];
+                String user_name = params[1];
+                String passwordR = params[2];
                 String type = params[3];
 
                 URL url = new URL(register_url);
@@ -91,9 +96,49 @@ class Database extends AsyncTask<String,Void,String> {
 
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
 
+                String post_data = URLEncoder.encode("user_name","UTF-8")+"="+URLEncoder.encode(user_name,"UTF-8")+"&"
+                        +URLEncoder.encode("passwordR","UTF-8")+"="+URLEncoder.encode(passwordR,"UTF-8")+"&"
+                        +URLEncoder.encode("type","UTF-8")+"="+URLEncoder.encode(type,"UTF-8");
+
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+
+                String line="";
+                while((line = bufferedReader.readLine())!= null) rezultat += line;
+
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+
+                return rezultat;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if(cmd.equals("newpass")) {
+            try {
+                String oldpass = params[1];
+                String newpass = params[2];
+
+                URL url = new URL(useri_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+
                 String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"
                         +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8")+"&"
-                        +URLEncoder.encode("type","UTF-8")+"="+URLEncoder.encode(type,"UTF-8");
+                        +URLEncoder.encode("newpass","UTF-8")+"="+URLEncoder.encode(newpass,"UTF-8");
 
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
