@@ -78,10 +78,13 @@ public class AdminLoginActivity extends AppCompatActivity {
         });
     }
     private void val(String username, String password){
+        /*
         String cmd = "login";//Milane promeni
         Database database = new Database(this);
         database.execute(cmd, username, password);
+        */
     }
+
     @Override
     public void onBackPressed(){
         Intent intent = new Intent(AdminLoginActivity.this,LoginActivity.class);
