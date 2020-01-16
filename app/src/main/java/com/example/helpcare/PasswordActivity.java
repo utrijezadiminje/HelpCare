@@ -16,7 +16,6 @@ public class PasswordActivity extends AppCompatActivity {
     private EditText Password1;
     private EditText Password2;
     private Button Change;
-    private Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +36,7 @@ public class PasswordActivity extends AppCompatActivity {
                 String OldPass = oldPassword.getText().toString();
                 if (Pass1.equals(Pass2)) {
                     String cmd = "newpass";
-                    Database database = new Database(this, ctx);
+                    Database database = new Database(this,getApplicationContext());
                     database.execute(cmd, OldPass, Pass1);
                 } else if (!Pass1.equals(Pass2)) {
                     CharSequence text = "LOZINKE SE NE POKLAPAJU";
