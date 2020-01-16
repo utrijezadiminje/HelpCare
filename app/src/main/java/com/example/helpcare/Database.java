@@ -83,8 +83,8 @@ class Database extends AsyncTask<String,Void,String> {
             }
         } else if (cmd.equals("register")) {
             try {
-                String user_name = params[1];
-                String passwordR = params[2];
+                String username = params[1];
+                String password = params[2];
                 String type = params[3];
 
                 URL url = new URL(register_url);
@@ -97,8 +97,8 @@ class Database extends AsyncTask<String,Void,String> {
 
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
 
-                String post_data = URLEncoder.encode("user_name", "UTF-8") + "=" + URLEncoder.encode(user_name, "UTF-8") + "&"
-                        + URLEncoder.encode("passwordR", "UTF-8") + "=" + URLEncoder.encode(passwordR, "UTF-8") + "&"
+                String post_data = URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8") + "&"
+                        + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8") + "&"
                         + URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode(type, "UTF-8");
 
                 bufferedWriter.write(post_data);
@@ -123,13 +123,14 @@ class Database extends AsyncTask<String,Void,String> {
                 e.printStackTrace();
             }
         }
-        /*else if(cmd.equals("newpass")) {
+        else if(cmd.equals("newpass")) {
             try {
-                String oldpass = params[1];
-                String newpass = params[2];
+                String username = params[1];
+                String password = params[2];
+                String newpass = params[3];
 
                 URL url = new URL(useri_url);
-                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setDoInput(true);
@@ -138,22 +139,20 @@ class Database extends AsyncTask<String,Void,String> {
 
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
 
-                /*
-                String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"
-                        +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8")+"&"
-                        +URLEncoder.encode("newpass","UTF-8")+"="+URLEncoder.encode(newpass,"UTF-8");
+                String post_data = URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8") + "&"
+                        + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8") + "&"
+                        + URLEncoder.encode("newpass", "UTF-8") + "=" + URLEncoder.encode(newpass, "UTF-8");
 
-
-                //bufferedWriter.write(post_data);
-                // bufferedWriter.flush();
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
                 bufferedWriter.close();
                 outputStream.close();
 
                 InputStream inputStream = httpURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
 
-                String line="";
-                while((line = bufferedReader.readLine())!= null) rezultat += line;
+                String line = "";
+                while ((line = bufferedReader.readLine()) != null) rezultat += line;
 
                 bufferedReader.close();
                 inputStream.close();
@@ -164,7 +163,8 @@ class Database extends AsyncTask<String,Void,String> {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
-            }*/
+            }
+        }
 
         return rezultat;
     }
@@ -178,8 +178,6 @@ class Database extends AsyncTask<String,Void,String> {
         if(rezultat.equals("Ltrue")) {
             Intent intent = new Intent(context, MainActivity.class);
             context.startActivity(intent);
-
-
         }
         else if(rezultat.equals("Lfalseu")) {
             CharSequence text = "KORISNIK NIJE PRONAĐEN";

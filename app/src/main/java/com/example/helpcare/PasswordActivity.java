@@ -34,15 +34,17 @@ public class PasswordActivity extends AppCompatActivity {
                 String Pass1 = Password1.getText().toString();
                 String Pass2 = Password2.getText().toString();
                 String OldPass = oldPassword.getText().toString();
-                if (Pass1.equals(Pass2)) {
+                String UserP = PrefUtils.getPassword(getApplicationContext());
+                if (Pass1.equals(Pass2) && UserP.equals(OldPass)) {
                     String cmd = "newpass";
+                    String UserN = PrefUtils.getUser(getApplicationContext());
                     Database database = new Database(this,getApplicationContext());
-                    database.execute(cmd, OldPass, Pass1);
+                    database.execute(cmd, UserN, UserP, Pass1);
                 } else if (!Pass1.equals(Pass2)) {
                     CharSequence text = "LOZINKE SE NE POKLAPAJU";
                     Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
                     toast.show();
-                } else if (!OldPass.equals("123")) {
+                } else if (!OldPass.equals(UserP)) {
                     CharSequence text = "STARA LOZINKA SE NE POKLAPA";
                     Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
                     toast.show();
