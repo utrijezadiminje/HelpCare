@@ -96,4 +96,9 @@ public class LoginActivity extends AppCompatActivity {
         Database database = new Database(this);
         database.execute(cmd, username, password);
     }
+    @Override
+    public void onBackPressed(){
+        finishAffinity();
+        finish();
+    }
 }

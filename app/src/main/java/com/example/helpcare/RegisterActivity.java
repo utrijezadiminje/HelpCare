@@ -69,7 +69,11 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
-
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+        startActivity(intent);
+    }
     private void val(String username, String password, int type){
         String cmd = "register";
         Database database = new Database(this);
