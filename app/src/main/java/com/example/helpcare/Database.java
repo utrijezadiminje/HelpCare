@@ -22,7 +22,6 @@ class Database extends AsyncTask<String,Void,String> {
     String rezultat = "";
 
     Context context;
-
     AlertDialog alertDialog;
 
     Database (Context ctx) { context = ctx; }
@@ -30,10 +29,8 @@ class Database extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... params) {
         String cmd = params[0];
-
         String login_url = "https://webdatabaseandroid.000webhostapp.com/login.php";
         String register_url = "https://webdatabaseandroid.000webhostapp.com/register.php";
-
         if(cmd.equals("login")) {
             try {
                 String user_name = params[1];

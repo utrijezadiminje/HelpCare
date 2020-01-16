@@ -82,7 +82,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="center"
-        android:text="IMAŠ NALOG? PRIJAVI SE."
+        android:maxLines="2"
+        android:minLines="1"
+        android:text="IMAŠ NALOG? PRIJAVI SE"
         app:layout_constraintEnd_toEndOf="@+id/btnRegister"
         app:layout_constraintStart_toStartOf="@+id/btnRegister"
         app:layout_constraintTop_toBottomOf="@+id/btnRegister" />

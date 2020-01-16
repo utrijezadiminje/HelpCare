@@ -2,6 +2,7 @@ package com.example.helpcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +21,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText Password;
     private TextView Tw;
     private Button Login;
+    private TextView Reg;
+    private TextView admin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +35,8 @@ public class LoginActivity extends AppCompatActivity {
         Password=findViewById(R.id.etPassword);
         Login =findViewById(R.id.btnLogin);
         Tw=findViewById(R.id.textView);
-        TextView Reg=findViewById(R.id.textView2);
-        TextView admin=findViewById(R.id.textView3);
+        Reg=findViewById(R.id.textView2);
+        admin=findViewById(R.id.textView3);
         Tw.setVisibility(View.GONE);
         Login.setEnabled(true);
         Password.addTextChangedListener(new TextWatcher() {

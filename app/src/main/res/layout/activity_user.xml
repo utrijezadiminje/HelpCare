@@ -79,6 +79,7 @@
         android:ems="10"
         android:gravity="center"
         android:text="TIP NALOGA:"
+        android:maxLines="1"
         android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="@+id/button2"
         app:layout_constraintHorizontal_bias="1.0"

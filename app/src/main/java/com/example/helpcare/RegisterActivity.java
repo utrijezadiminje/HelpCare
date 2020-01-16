@@ -1,7 +1,10 @@
 package com.example.helpcare;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,21 +17,26 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
+
     private EditText Username;
     private EditText Password;
     private EditText Password2;
     private int T;
+    private Spinner Spinner;
+    private Button Register;
+    private TextView LogIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
         Username = findViewById(R.id.etUsername);
         Password=findViewById(R.id.etPassword1);
         Password2=findViewById(R.id.etPassword2);
-        Spinner Spinner =findViewById(R.id.spinner);
-        Button Register=findViewById(R.id.btnRegister);
-        TextView LogIn=findViewById(R.id.login);
+        Spinner =findViewById(R.id.spinner);
+        Register=findViewById(R.id.btnRegister);
+        LogIn=findViewById(R.id.login);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.type, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -59,6 +67,9 @@ public class RegisterActivity extends AppCompatActivity {
                 String pass2 = Password2.getText().toString();
                 if (pass1.equals(pass2)) {
                     val(username, pass1, T);
+                    CharSequence text = "KORISNIK USPEŠNO REGISTROVAN";// UMESTO TOSTA UBACITI LOADING SCREEN ILI BILO STA STO MOZE CINITI APP EFIKASNIJOM
+                    Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
+                    toast.show();
                 }
                 else {
                     CharSequence text = "LOZINKE SE NE POKLAPAJU";
