@@ -22,7 +22,6 @@ public class PasswordActivity extends AppCompatActivity {
         oldPassword = findViewById(R.id.oldPassword);
         Password1 = findViewById(R.id.newPassword1);
         Password2 = findViewById(R.id.newPassword2);
-
         Change = findViewById(R.id.btnReset);
         Change.setOnClickListener(new View.OnClickListener() {
             @Override
