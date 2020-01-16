@@ -2,7 +2,9 @@ package com.example.helpcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -41,7 +43,22 @@ public class UserActivity extends AppCompatActivity {
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              Logout();
+                AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
+                builder.setTitle("PAŽNJA");
+                builder.setMessage("DA LI SIGURNO ŽELITE DA SE ODJAVITE?");
+                builder.setPositiveButton("DA", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Logout();
+                    }
+                });
+                builder.setNegativeButton("NE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 

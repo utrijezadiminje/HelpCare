@@ -2,19 +2,20 @@ package com.example.helpcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.InputType;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
@@ -42,9 +43,6 @@ public class LoginActivity extends AppCompatActivity {
         admin=findViewById(R.id.textView3);
         Tw.setVisibility(View.GONE);
         Login.setEnabled(true);
-        final String strName = Name.getText().toString();
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-
         Password.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -113,7 +111,22 @@ public class LoginActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed(){
-        finishAffinity();
-        finish();
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+        builder.setTitle("PAŽNJA");
+        builder.setMessage("DA LI SIGURNO ŽELITE DA IZAĐETE?");
+        builder.setPositiveButton("DA", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finishAffinity();
+                finish();
+            }
+        });
+        builder.setNegativeButton("NE", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
