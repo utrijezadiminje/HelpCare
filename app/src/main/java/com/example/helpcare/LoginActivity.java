@@ -19,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText Name;
     private EditText Password;
     private TextView Tw;
+    private Button Login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +30,14 @@ public class LoginActivity extends AppCompatActivity {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(Name, InputMethodManager.SHOW_IMPLICIT);
         Password=findViewById(R.id.etPassword);
-        Button Login =findViewById(R.id.btnLogin);
+        Login =findViewById(R.id.btnLogin);
         Tw=findViewById(R.id.textView);
         TextView Reg=findViewById(R.id.textView2);
         TextView admin=findViewById(R.id.textView3);
         Tw.setVisibility(View.GONE);
+        Login.setEnabled(true);
         Password.addTextChangedListener(new TextWatcher() {
+
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
