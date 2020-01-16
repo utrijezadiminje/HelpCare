@@ -65,7 +65,8 @@
         android:ems="10"
         android:gravity="center"
         android:maxLines="2"
-        android:text="NEMAŠ NALOG? REGISTRUJ SE"
+        android:text="NEMAŠ NALOG?
+        REGISTRUJ SE"
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +81,8 @@
         android:ems="10"
         android:gravity="center"
         android:maxLines="2"
-        android:text="PRIJAVI SE KAO ADMINISTRATOR"
+        android:text="PRIJAVI SE KAO
+        ADMINISTRATOR"
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
