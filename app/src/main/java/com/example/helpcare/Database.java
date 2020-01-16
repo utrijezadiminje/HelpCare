@@ -19,7 +19,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 class Database extends AsyncTask<String,Void,String> {
-    String konekcija = "";
+    String rezultat = "";
+
     Context context;
 
     AlertDialog alertDialog;
@@ -29,6 +30,7 @@ class Database extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... params) {
         String cmd = params[0];
+
         String login_url = "https://webdatabaseandroid.000webhostapp.com/login.php";
         String register_url = "https://webdatabaseandroid.000webhostapp.com/register.php";
 
@@ -58,15 +60,14 @@ class Database extends AsyncTask<String,Void,String> {
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
 
-                String result="";
-                String line="";
-                while((line = bufferedReader.readLine())!= null) konekcija += line;
+                String line = "";
+                while((line = bufferedReader.readLine())!= null) rezultat += line;
 
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
 
-                return konekcija;
+                return rezultat;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -78,6 +79,7 @@ class Database extends AsyncTask<String,Void,String> {
             try {
                 String username = params[1];
                 String password = params[2];
+                String type = params[3];
 
                 URL url = new URL(register_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
@@ -90,7 +92,8 @@ class Database extends AsyncTask<String,Void,String> {
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
 
                 String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"
-                        +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8");
+                        +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(password,"UTF-8")+"&"
+                        +URLEncoder.encode("type","UTF-8")+"="+URLEncoder.encode(type,"UTF-8");
 
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
@@ -101,13 +104,13 @@ class Database extends AsyncTask<String,Void,String> {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
 
                 String line="";
-                while((line = bufferedReader.readLine())!= null) konekcija += line;
+                while((line = bufferedReader.readLine())!= null) rezultat += line;
 
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
 
-                return konekcija;
+                return rezultat;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -115,7 +118,7 @@ class Database extends AsyncTask<String,Void,String> {
             }
         }
 
-        return konekcija;
+        return rezultat;
     }
 
     @Override
@@ -123,34 +126,34 @@ class Database extends AsyncTask<String,Void,String> {
     }
 
     @Override
-    protected void onPostExecute(String konekcija) {
-        if(konekcija.equals("Ltrue")) {
+    protected void onPostExecute(String rezultat) {
+        if(rezultat.equals("Ltrue")) {
             Intent intent = new Intent(context, MainActivity.class);
             context.startActivity(intent);
         }
-        else if(konekcija.equals("Lfalseu")) {
+        else if(rezultat.equals("Lfalseu")) {
             CharSequence text = "KORISNIK NIJE PRONAĐEN";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
-        else if(konekcija.equals("Lfalsep")) {
+        else if(rezultat.equals("Lfalsep")) {
             CharSequence text = "POGREŠNA LOZINKA";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
-        else if(konekcija.equals("Rtrue")) {
+        else if(rezultat.equals("Rtrue")) {
             Intent intent = new Intent(context, LoginActivity.class);
             context.startActivity(intent);
         }
-        else if(konekcija.equals("RfalseU")) {
+        else if(rezultat.equals("RfalseU")) {
             CharSequence text = "KORISNIČKO IME JE ZAUZETO";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
-        else if(konekcija.equals("Rfalse")) {
+        else if(rezultat.equals("Rfalse")) {
             CharSequence text = "DOŠLO JE DO GREŠKE";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);

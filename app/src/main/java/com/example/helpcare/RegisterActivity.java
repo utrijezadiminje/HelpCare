@@ -2,7 +2,6 @@ package com.example.helpcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -76,7 +75,13 @@ public class RegisterActivity extends AppCompatActivity {
     }
     private void val(String username, String password, int type){
         String cmd = "register";
+        String x;
+        if(type == 1) x = "1";
+        else if (type == 2) x = "2";
+        else if (type == 3) x = "3";
+        else x = "4";
         Database database = new Database(this);
-        database.execute(cmd, username, password);
+        database.execute(cmd, username, password, x);
     }
+
 }
