@@ -122,7 +122,8 @@ class Database extends AsyncTask<String,Void,String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } /*else if(cmd.equals("newpass")) {
+        }
+        /*else if(cmd.equals("newpass")) {
             try {
                 String oldpass = params[1];
                 String newpass = params[2];
@@ -177,6 +178,8 @@ class Database extends AsyncTask<String,Void,String> {
         if(rezultat.equals("Ltrue")) {
             Intent intent = new Intent(context, MainActivity.class);
             context.startActivity(intent);
+
+
         }
         else if(rezultat.equals("Lfalseu")) {
             CharSequence text = "KORISNIK NIJE PRONAĐEN";

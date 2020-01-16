@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -26,6 +28,7 @@ public class UserActivity extends AppCompatActivity {
         password = findViewById(R.id.button2);
         logOut=findViewById(R.id.logOut);
         name.requestFocus();
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(name, InputMethodManager.SHOW_IMPLICIT);
         password.setOnClickListener(new View.OnClickListener() {
@@ -38,13 +41,18 @@ public class UserActivity extends AppCompatActivity {
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserActivity.this,LoginActivity.class);
-                startActivity(intent);
-                finish();
-                CharSequence text = "USPEŠNO STE SE IZLOGOVALI";
-                Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
-                toast.show();
+              Logout();
             }
         });
+
+    }
+    public void Logout()
+    {
+        PrefUtils.saveLog(false,this);
+        Intent intent = new Intent(UserActivity.this,LoginActivity.class);
+        startActivity(intent);
+        CharSequence text = "USPEŠNO STE SE IZLOGOVALI";
+        Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
+        toast.show();
     }
 }

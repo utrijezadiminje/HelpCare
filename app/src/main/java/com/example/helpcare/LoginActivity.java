@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -39,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
         admin=findViewById(R.id.textView3);
         Tw.setVisibility(View.GONE);
         Login.setEnabled(true);
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
         Password.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -77,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 val(Name.getText().toString(),Password.getText().toString());
             }
         });
@@ -98,9 +103,12 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
     private void val(String username, String password){
+        PrefUtils.saveUser(username,this);
+        PrefUtils.savePassword(password,this);
         String cmd = "login";
         Database database = new Database(this);
         database.execute(cmd, username, password);
+
     }
     @Override
     public void onBackPressed(){
