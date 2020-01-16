@@ -36,7 +36,6 @@ public class TeamActivity extends AppCompatActivity {
         final String izadji = "IZAĐI IZ TIMA";
         button.setText(nadji);
         super.onCreate(savedInstanceState);
-
         iv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
