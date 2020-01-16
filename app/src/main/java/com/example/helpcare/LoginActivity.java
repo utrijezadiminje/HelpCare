@@ -2,7 +2,6 @@ package com.example.helpcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +9,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Name = findViewById(R.id.etName);
+
         Name.requestFocus();
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(Name, InputMethodManager.SHOW_IMPLICIT);
@@ -41,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         admin=findViewById(R.id.textView3);
         Tw.setVisibility(View.GONE);
         Login.setEnabled(true);
+        final String strName = Name.getText().toString();
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         Password.addTextChangedListener(new TextWatcher() {
@@ -81,7 +83,6 @@ public class LoginActivity extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 val(Name.getText().toString(),Password.getText().toString());
             }
         });

@@ -8,7 +8,6 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,6 +35,7 @@ public class TeamActivity extends AppCompatActivity {
         final String izadji = "IZAĐI IZ TIMA";
         button.setText(nadji);
         super.onCreate(savedInstanceState);
+
         iv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
