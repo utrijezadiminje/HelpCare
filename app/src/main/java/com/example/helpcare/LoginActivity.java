@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                     };
 
                     Handler pdCanceller = new Handler();
-                    pdCanceller.postDelayed(progressRunnable, 2000);
+                    pdCanceller.postDelayed(progressRunnable, 900);
                 }
             }
         });
