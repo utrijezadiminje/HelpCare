@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class PhoneSetupActivity extends AppCompatActivity {
 
@@ -16,6 +17,7 @@ public class PhoneSetupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_setup);
         final Button btn =findViewById(R.id.btnPhnChng);
+        final EditText et =findViewById(R.id.etBroj);
         final String s1="UNESI BROJ";
         final String s2="UKLONI BROJ";
         btn.setText(s1);
@@ -23,6 +25,7 @@ public class PhoneSetupActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             String btntxt=btn.getText().toString();
+            String broj=et.getText().toString();
             if(btntxt.equals(s1)) {
                 btn.setText(s2);
                 btn.setBackgroundResource(R.drawable.dugmetaraaccent);
