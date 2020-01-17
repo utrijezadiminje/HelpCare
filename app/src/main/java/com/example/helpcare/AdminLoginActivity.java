@@ -78,11 +78,9 @@ public class AdminLoginActivity extends AppCompatActivity {
         });
     }
     private void val(String username, String password){
-        /*
-        String cmd = "login";//Milane promeni
+        String cmd = "adminl";
         Database database = new Database(this);
         database.execute(cmd, username, password);
-        */
     }
 
     @Override

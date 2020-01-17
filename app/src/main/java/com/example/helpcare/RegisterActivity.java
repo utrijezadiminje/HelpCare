@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -85,14 +86,20 @@ public class RegisterActivity extends AppCompatActivity {
         startActivity(intent);
     }
     private void val(String username, String password, int type){
-        String cmd = "register";
         String x;
         if(type == 1) x = "1";
         else if (type == 2) x = "2";
         else if (type == 3) x = "3";
         else x = "4";
-        Database database = new Database(this);
-        database.execute(cmd, username, password, x);
+        if(x.equals("3")) {
+            String cmd = "adminr";
+            Database database = new Database(this);
+            database.execute(cmd, username, password);
+        } else {
+            String cmd = "register";
+            Database database = new Database(this);
+            database.execute(cmd, username, password, x);
+        }
     }
 
 }
