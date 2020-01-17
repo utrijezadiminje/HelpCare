@@ -178,36 +178,40 @@ class Database extends AsyncTask<String,Void,String> {
         if(rezultat.equals("Ltrue")) {
             Intent intent = new Intent(context, MainActivity.class);
             context.startActivity(intent);
-        }
-        else if(rezultat.equals("Lfalseu")) {
+        } else if(rezultat.equals("Lfalseu")) {
             CharSequence text = "KORISNIK NIJE PRONAĐEN";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
-        }
-        else if(rezultat.equals("Lfalsep")) {
+        } else if(rezultat.equals("Lfalsep")) {
             CharSequence text = "POGREŠNA LOZINKA";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
-        }
-        else if(rezultat.equals("Rtrue")) {
+        } else if(rezultat.equals("Rtrue")) {
             Intent intent = new Intent(context, LoginActivity.class);
             context.startActivity(intent);
-        }
-        else if(rezultat.equals("RfalseU")) {
+        } else if(rezultat.equals("RfalseU")) {
             CharSequence text = "KORISNIČKO IME JE ZAUZETO";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
-        }
-        else if(rezultat.equals("Rfalse")) {
+        } else if(rezultat.equals("Rfalse")) {
             CharSequence text = "DOŠLO JE DO GREŠKE";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
-        }
-        else {
+        } else if(rezultat.equals("Ptruei")) {
+            CharSequence text = "LOZINKA JE USPESNO PROMENJENA";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        } else if(rezultat.equals("false")) {
+            CharSequence text = "LOZINKA NIJE PROMENJENA";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        } else {
             CharSequence text = "NEMA INTERNETA";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
