@@ -40,6 +40,7 @@ public class PasswordActivity extends AppCompatActivity {
                     String UserN = PrefUtils.getUser(getApplicationContext());
                     Database database = new Database(this,getApplicationContext());
                     database.execute(cmd, UserN, UserP, Pass1);
+                    PrefUtils.savePassword(Pass1, getApplicationContext());
                 } else if (!Pass1.equals(Pass2)) {
                     CharSequence text = "LOZINKE SE NE POKLAPAJU";
                     Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
