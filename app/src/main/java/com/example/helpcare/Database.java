@@ -299,8 +299,7 @@ class Database extends AsyncTask<String,Void,String> {
             Intent intent = new Intent(context, MainActivity.class);
             context.startActivity(intent);
         } else if(rezultat.equals("Lfalseu")) {
-            String s = "";
-            CharSequence text = s;
+            CharSequence text = "KORISNIK NIJE PRONADJEN";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
