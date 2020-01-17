@@ -66,6 +66,10 @@ public class TeamActivity extends AppCompatActivity {
             public void onClick(View view) {
             String btntxt=button.getText().toString();
             if(btntxt.equals(nadji)) {
+                String cmd = "find";
+                String username = PrefUtils.getUser(getApplicationContext());
+                Database database = new Database(this, getApplicationContext());
+                database.execute(cmd, username);
                 button.setText(izadji);
                 button.setBackgroundResource(R.drawable.dugmetaraaccent);
             }
