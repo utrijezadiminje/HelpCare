@@ -15,7 +15,7 @@
     <string name="oldPassword">"STARA LOZINKA"</string>
     <string name="newPassword">"NOVA LOZINKA"</string>
     <string name="repeatPassword">"PONOVITE LOZINKU"</string>
-    <string name="regsiter">"REGISTRUJ SE"</string>
+    <string name="register">"REGISTRUJ SE"</string>
     <string name="haveAcc">"IMAŠ NALOG?\nPRIJAVI SE"</string>
     <string name="regsiterTitle">"REGISTRACIJA"</string>
 

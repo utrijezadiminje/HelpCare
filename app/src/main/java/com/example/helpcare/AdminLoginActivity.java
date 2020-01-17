@@ -36,6 +36,8 @@ public class AdminLoginActivity extends AppCompatActivity {
         password=findViewById(R.id.password);
         login=findViewById(R.id.logIn);
         showhide.setVisibility(View.GONE);
+        final String show = getString(R.string.show);
+        final String hide = getString(R.string.hide);
         password.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -58,13 +60,13 @@ public class AdminLoginActivity extends AppCompatActivity {
         showhide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(showhide.getText()=="PRIKAŽI"){
-                    showhide.setText("SAKRIJ");
+                if(showhide.getText().equals(show)){
+                    showhide.setText(hide);
                     password.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     password.setSelection(password.length());
                 }
                 else{
-                    showhide.setText("PRIKAŽI");
+                    showhide.setText(show);
                     password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     password.setSelection(password.length());
                 }
