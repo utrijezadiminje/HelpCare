@@ -3,6 +3,7 @@ package com.example.helpcare;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.view.View;
 
 public class PrefUtils {
     PrefUtils(){
@@ -33,6 +34,7 @@ public class PrefUtils {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getString(Constants.KEY_PASSWORD, null);
     }
+
     public static boolean getLog(Context context){
         SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getBoolean(Constants.KEY_Logged,false);
