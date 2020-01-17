@@ -21,6 +21,7 @@ public class UserActivity extends AppCompatActivity {
     private EditText name;
     private Button password;
     private TextView logOut;
+    private Button changeUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,24 @@ public class UserActivity extends AppCompatActivity {
         name.setText(Username);
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        changeUsername=findViewById(R.id.button);
+        final String changeUser=changeUsername.getText().toString();
         imm.showSoftInput(name, InputMethodManager.SHOW_IMPLICIT);
+        changeUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String User1 = name.getText().toString();
+                String User2 = PrefUtils.getUser(getApplicationContext());
+                if (User1.equals(User2)) {
+                    CharSequence text = "UPIŠITE NOVO IME";
+                    Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
+                    toast.show();
+
+                } else{
+                    //promeni korisnicko ime
+                }
+            }
+        });
         password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
