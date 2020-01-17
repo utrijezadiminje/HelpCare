@@ -77,9 +77,9 @@ public class AdminLoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 if(emptyChecker()) {
                     val(password.getText().toString(), password.getText().toString());
-                    login.setClickable(false);
                     final ProgressDialog dialog = ProgressDialog.show(AdminLoginActivity.this, "",
                             "ČEKANJE...", true);
                     Runnable progressRunnable = new Runnable() {
@@ -91,7 +91,7 @@ public class AdminLoginActivity extends AppCompatActivity {
 
                     Handler pdCanceller = new Handler();
                     pdCanceller.postDelayed(progressRunnable, 2000);
-                    login.setClickable(true);
+
                 }
             }
         });
@@ -108,11 +108,12 @@ public class AdminLoginActivity extends AppCompatActivity {
             name.setError("UNESITE KORISNIČKO IME");
             return false;
         }
+        else
         if(password.getText().toString().trim().equalsIgnoreCase("")){
             password.setError("UNESITE LOZINKU");
             return false;
         }
-        return false;
+        return true;
     }
     @Override
     public void onBackPressed(){

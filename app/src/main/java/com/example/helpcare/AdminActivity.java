@@ -14,7 +14,7 @@ public class AdminActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed(){
-        Intent intent = new Intent(AdminActivity.this,LoginActivity.class);
+        Intent intent = new Intent(AdminActivity.this,AdminLoginActivity.class);
         startActivity(intent);
     }
 }

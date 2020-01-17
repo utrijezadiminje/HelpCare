@@ -83,7 +83,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(emptyChecker()) {
                     val(Name.getText().toString(), Password.getText().toString());
-                    Login.setClickable(false);
                     final ProgressDialog dialog = ProgressDialog.show(LoginActivity.this, "",
                             "ČEKANJE...", true);
                     Runnable progressRunnable = new Runnable() {
@@ -95,7 +94,6 @@ public class LoginActivity extends AppCompatActivity {
 
                     Handler pdCanceller = new Handler();
                     pdCanceller.postDelayed(progressRunnable, 2000);
-                    Login.setClickable(true);
                 }
             }
         });
@@ -122,7 +120,6 @@ public class LoginActivity extends AppCompatActivity {
         String cmd = "login";
         Database database = new Database(this);
         database.execute(cmd, username, password);
-
     }
     @Override
     public void onBackPressed(){
@@ -150,6 +147,7 @@ public class LoginActivity extends AppCompatActivity {
             Name.setError("UNESITE KORISNIČKO IME");
             return false;
         }
+        else
         if(Password.getText().toString().trim().equalsIgnoreCase("")){
             Password.setError("UNESITE LOZINKU");
             return false;
