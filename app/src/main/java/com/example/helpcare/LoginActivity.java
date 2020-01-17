@@ -81,9 +81,9 @@ public class LoginActivity extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Login.setClickable(false);
                 if(emptyChecker()) {
                     val(Name.getText().toString(), Password.getText().toString());
+                    Login.setClickable(false);
                     final ProgressDialog dialog = ProgressDialog.show(LoginActivity.this, "",
                             "ČEKANJE...", true);
                     Runnable progressRunnable = new Runnable() {
@@ -154,7 +154,7 @@ public class LoginActivity extends AppCompatActivity {
             Password.setError("UNESITE LOZINKU");
             return false;
         }
-            return true;
+        return true;
     }
 }
 

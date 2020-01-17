@@ -76,10 +76,10 @@ public class AdminLoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login.setClickable(false);
-                if(emptyChecker()) {
 
-                    val(name.getText().toString(),password.getText().toString());
+                if(emptyChecker()) {
+                    val(password.getText().toString(), password.getText().toString());
+                    login.setClickable(false);
                     final ProgressDialog dialog = ProgressDialog.show(AdminLoginActivity.this, "",
                             "ČEKANJE...", true);
                     Runnable progressRunnable = new Runnable() {
@@ -88,24 +88,20 @@ public class AdminLoginActivity extends AppCompatActivity {
                             dialog.cancel();
                         }
                     };
+
                     Handler pdCanceller = new Handler();
                     pdCanceller.postDelayed(progressRunnable, 2000);
                     login.setClickable(true);
                 }
             }
         });
-    }
+}
     private void val(String username, String password){
         String cmd = "adminl";
         Database database = new Database(this);
         database.execute(cmd, username, password);
     }
 
-    @Override
-    public void onBackPressed(){
-        Intent intent = new Intent(AdminLoginActivity.this,LoginActivity.class);
-        startActivity(intent);
-    }
     private boolean emptyChecker()
     {
         if(name.getText().toString().trim().equalsIgnoreCase("")){
@@ -116,6 +112,12 @@ public class AdminLoginActivity extends AppCompatActivity {
             password.setError("UNESITE LOZINKU");
             return false;
         }
-        return true;
+        return false;
     }
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(AdminLoginActivity.this,LoginActivity.class);
+        startActivity(intent);
+    }
+
 }
