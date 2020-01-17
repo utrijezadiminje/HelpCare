@@ -2,6 +2,7 @@ package com.example.helpcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -53,6 +54,8 @@ public class UserActivity extends AppCompatActivity {
                     Database database = new Database(this,getApplicationContext());
                     database.execute(cmd, User2, User1);
                     PrefUtils.saveUser(User1, getApplicationContext());
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
                 }
             }
         });
