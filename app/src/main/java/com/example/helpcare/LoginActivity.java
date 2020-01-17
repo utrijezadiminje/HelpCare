@@ -79,7 +79,9 @@ public class LoginActivity extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                val(Name.getText().toString(),Password.getText().toString());
+                if(emptyChecker()) {
+                    val(Name.getText().toString(), Password.getText().toString());
+                }
             }
         });
 
@@ -127,4 +129,20 @@ public class LoginActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+    private boolean emptyChecker()
+    {
+        if(Name.getText().toString().trim().equalsIgnoreCase("")){
+            Name.setError("UNESITE KORISNIČKO IME");
+            return false;
+        }
+        if(Password.getText().toString().trim().equalsIgnoreCase("")){
+            Password.setError("UNESITE LOZINKU");
+            return false;
+        }
+
+            return true;
+
+
+    }
 }
+
