@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -22,6 +23,7 @@ public class TeamActivity extends AppCompatActivity {
     private static final int REQUEST_CALL = 1;
     private static final String TAG = "TeamActivity";
     private static final String[] CALL_PERMISSIONS = {Manifest.permission.CALL_PHONE };
+    private static String cmd="find";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_team);
@@ -35,7 +37,7 @@ public class TeamActivity extends AppCompatActivity {
         final String nadji = "NAĐI TIM";
         final String izadji = "IZAĐI IZ TIMA";
         final String prekini = "PREKINI POTRAGU";
-        String cmd="find";
+
         ImageView menjaj = findViewById(R.id.imgBrojPromeni);
         button.setText(nadji);
         super.onCreate(savedInstanceState);
@@ -68,21 +70,29 @@ public class TeamActivity extends AppCompatActivity {
             Database database = new Database(this, getApplicationContext());
             switch(btntxt) {
                 case nadji:
-                    button.setText(prekini);
-                    /*if(cmd.equals("find")) {
+                    if(cmd.equals("find")) {
                         String username = PrefUtils.getUser(getApplicationContext());
-                        //database.execute(cmd, username);
+                        database.execute(cmd, username);
                         button.setText(izadji);
                         button.setBackgroundResource(R.drawable.dugmetaraaccent);
-                    }*/
-                    break;
-                case prekini:
-                    //cmd="";
+                    }
+                    else
+                    {
+                       final ProgressDialog myDialog = new ProgressDialog(TeamActivity.this);
+                        myDialog.setMessage("UČITAVANJE...");
+                        myDialog.setCancelable(false);
+                        myDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "PREKINI", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                button.setText(nadji);
 
-                    //prekine nekako;
-                    button.setText(nadji);
+                            }
+                        });
+                        myDialog.show();
+                    }
                     break;
-                case izadji:
+                    case izadji:
                     AlertDialog.Builder builder = new AlertDialog.Builder(TeamActivity.this);
                     builder.setTitle("PAŽNJA");
                     builder.setMessage("DA LI SIGURNO ŽELITE DA NAPUSTITE TIM?");
