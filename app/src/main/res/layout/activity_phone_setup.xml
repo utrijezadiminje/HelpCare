@@ -27,4 +27,14 @@
         app:layout_constraintStart_toStartOf="@+id/etBroj"
         app:layout_constraintTop_toBottomOf="@+id/etBroj" />
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="49dp"
+        android:layout_height="51dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/etBroj"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_tel" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

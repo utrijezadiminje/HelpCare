@@ -65,6 +65,7 @@
         android:layout_height="wrap_content"
         android:text="ADMIN PANEL"
         android:gravity="center"
+        android:textColor="#FFFFFF"
         android:textSize="45dp"
         app:layout_constraintBottom_toTopOf="@+id/admin"
         app:layout_constraintEnd_toEndOf="parent"
