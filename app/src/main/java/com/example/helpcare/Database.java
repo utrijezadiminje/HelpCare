@@ -202,7 +202,7 @@ class Database extends AsyncTask<String,Void,String> {
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         } else if(rezultat.equals("Ptruei")) {
-            CharSequence text = "LOZINKA PROMENJENA";
+            CharSequence text = "LOZINKA JE USPESNO PROMENJENA";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
