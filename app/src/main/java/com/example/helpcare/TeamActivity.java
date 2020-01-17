@@ -16,8 +16,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
-
 
 public class TeamActivity extends AppCompatActivity {
 
@@ -36,6 +34,8 @@ public class TeamActivity extends AppCompatActivity {
         final String broj2 = "+381691491011";
         final String nadji = "NAĐI TIM";
         final String izadji = "IZAĐI IZ TIMA";
+        final String prekini = "PREKINI POTRAGU";
+        String cmd="find";
         ImageView menjaj = findViewById(R.id.imgBrojPromeni);
         button.setText(nadji);
         super.onCreate(savedInstanceState);
@@ -65,7 +65,45 @@ public class TeamActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
             String btntxt=button.getText().toString();
-            if(btntxt.equals(nadji)) {
+            Database database = new Database(this, getApplicationContext());
+            switch(btntxt) {
+                case nadji:
+                    button.setText(prekini);
+                    /*if(cmd.equals("find")) {
+                        String username = PrefUtils.getUser(getApplicationContext());
+                        //database.execute(cmd, username);
+                        button.setText(izadji);
+                        button.setBackgroundResource(R.drawable.dugmetaraaccent);
+                    }*/
+                    break;
+                case prekini:
+                    //cmd="";
+
+                    //prekine nekako;
+                    button.setText(nadji);
+                    break;
+                case izadji:
+                    AlertDialog.Builder builder = new AlertDialog.Builder(TeamActivity.this);
+                    builder.setTitle("PAŽNJA");
+                    builder.setMessage("DA LI SIGURNO ŽELITE DA NAPUSTITE TIM?");
+                    builder.setPositiveButton("DA", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            button.setText(nadji);
+                            button.setBackgroundResource(R.drawable.dugmetara);
+                        }
+                    });
+                    builder.setNegativeButton("NE", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                    button.setText(nadji);
+                    break;
+            }
+            /*if(btntxt.equals(nadji)) {
                 String cmd = "find";
                 String username = PrefUtils.getUser(getApplicationContext());
                 Database database = new Database(this, getApplicationContext());
@@ -91,9 +129,8 @@ public class TeamActivity extends AppCompatActivity {
                 });
                 AlertDialog dialog = builder.create();
                 dialog.show();
-                }
+                }*/
             }
-
         });
 
     }
