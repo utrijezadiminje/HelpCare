@@ -36,8 +36,12 @@ public class TeamActivity extends AppCompatActivity {
         final String broj2 = "+381691491011";
         final String nadji = "NAĐI TIM";
         final String izadji = "IZAĐI IZ TIMA";
+        ImageView menjaj = findViewById(R.id.imgBrojPromeni);
         button.setText(nadji);
         super.onCreate(savedInstanceState);
+        iv1.setClickable(true);
+        iv2.setClickable(true);
+        menjaj.setClickable(true);
         iv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,6 +52,13 @@ public class TeamActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
              makePhoneCall(broj2);
+            }
+        });
+        menjaj.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TeamActivity.this,PhoneSetupActivity.class);
+                startActivity(intent);
             }
         });
         button.setOnClickListener(new View.OnClickListener() {
@@ -108,7 +119,11 @@ public class TeamActivity extends AppCompatActivity {
         }
 
     }
-
-
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(TeamActivity.this,MainActivity.class);
+        startActivity(intent);
+    }
 
 }
