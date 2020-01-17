@@ -2,6 +2,8 @@ package com.example.helpcare;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -27,14 +29,14 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,TeamActivity.class);
+                Intent intent = new Intent(MainActivity.this,UserActivity.class);
                 startActivity(intent);
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,UserActivity.class);
+                Intent intent = new Intent(MainActivity.this,TeamActivity.class);
                 startActivity(intent);
             }
         });
@@ -49,7 +51,23 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        finishAffinity();
-        finish();
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("PAŽNJA");
+        builder.setMessage("DA LI SIGURNO ŽELITE DA IZAĐETE?");
+        builder.setPositiveButton("DA", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finishAffinity();
+                finish();
+            }
+        });
+        builder.setNegativeButton("NE", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
+

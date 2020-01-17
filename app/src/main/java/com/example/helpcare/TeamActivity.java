@@ -6,6 +6,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -14,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 
 public class TeamActivity extends AppCompatActivity {
@@ -35,7 +38,6 @@ public class TeamActivity extends AppCompatActivity {
         final String izadji = "IZAĐI IZ TIMA";
         button.setText(nadji);
         super.onCreate(savedInstanceState);
-
         iv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,8 +59,23 @@ public class TeamActivity extends AppCompatActivity {
                 button.setBackgroundResource(R.drawable.dugmetaraaccent);
             }
             else{
-                    button.setText(nadji);
-                    button.setBackgroundResource(R.drawable.dugmetara);
+                AlertDialog.Builder builder = new AlertDialog.Builder(TeamActivity.this);
+                builder.setTitle("PAŽNJA");
+                builder.setMessage("DA LI SIGURNO ŽELITE DA NAPUSTITE TIM?");
+                builder.setPositiveButton("DA", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        button.setText(nadji);
+                        button.setBackgroundResource(R.drawable.dugmetara);
+                    }
+                });
+                builder.setNegativeButton("NE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
                 }
             }
 
