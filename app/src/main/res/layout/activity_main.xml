@@ -54,7 +54,7 @@
         android:layout_height="77dp"
         android:layout_marginTop="29dp"
         android:background="@drawable/dugmetara"
-        android:text="ZADATAK"
+        android:text="@string/task"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

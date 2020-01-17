@@ -1,14 +1,23 @@
 <resources>
     <string name="app_name">Help &amp; Care</string>
-    <string name="title_activity_login">"Sign in"</string>
-    <string name="prompt_email">"Email"</string>
-    <string name="prompt_password">"Password"</string>
-    <string name="action_sign_in">"Sign in or register"</string>
-    <string name="action_sign_in_short">"Sign in"</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">"Not a valid username"</string>
-    <string name="invalid_password">"Password must be >5 characters"</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="logIn">"ULOGUJ SE"</string>
+    <string name="password">"LOZINKA"</string>
+    <string name="type">"TIP NALOGA"</string>
+    <string name="changeUsername">"PROMENI KORISNIČKO IME"</string>
+    <string name="changePassword">"PROMENI LOZINKU"</string>
+    <string name="logOut">"ODJAVI SE"</string>
+    <string name="username">"KORISNIČKO IME"</string>
+    <string name="show">"PRIKAŽI"</string>
+    <string name="hide">"SAKRIJ"</string>
+    <string name="noAcc">"NEMAŠ NALOG?\nREGISTRUJ SE"</string>
+    <string name="task">"ZADATAK"</string>
+    <string name="logInAdmin">"PRIJAVI SE KAO\nADMINISTRATOR"</string>
+    <string name="oldPassword">"STARA LOZINKA"</string>
+    <string name="newPassword">"NOVA LOZINKA"</string>
+    <string name="repeatPassword">"PONOVITE LOZINKU"</string>
+    <string name="regsiter">"REGISTRUJ SE"</string>
+    <string name="haveAcc">"IMAŠ NALOG?\nPRIJAVI SE"</string>
+    <string name="regsiterTitle">"REGISTRACIJA"</string>
 
     <string-array name="type">
         <item>Lekar Opšte Prakse</item>

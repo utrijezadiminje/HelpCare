@@ -13,8 +13,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="center"
-        android:hint="LOZINKA"
+        android:hint="@string/password"
         android:inputType="textPassword"
+        android:importantForAutofill="no"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,8 +27,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="center"
-        android:hint="KORISNIČKO IME"
+        android:hint="@string/username"
         android:inputType="textPersonName"
+        android:importantForAutofill="no"
         app:layout_constraintBottom_toTopOf="@+id/etPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +43,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/dugmetara"
         android:backgroundTint="@color/colorPrimary"
-        android:text="PRIJAVI SE"
+        android:text="@string/logIn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,10 +52,10 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="59dp"
-        android:layout_height="23dp"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
         android:ems="10"
-        android:text="PRIKAŽI"
+        android:text="@string/show"
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="@+id/etPassword"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,13 +65,12 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
         android:ems="10"
         android:gravity="center"
         android:maxLines="2"
-        android:text="NEMAŠ NALOG?
-        REGISTRUJ SE"
+        android:text="@string/noAcc"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,12 +86,11 @@
         android:ems="10"
         android:gravity="center"
         android:maxLines="2"
-        android:text="PRIJAVI SE KAO
-        ADMINISTRATOR"
+        android:text="@string/logInAdmin"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin"
         app:layout_constraintVertical_bias="0.5" />
@@ -103,7 +103,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher_foreground" />
+        app:srcCompat="@mipmap/ic_launcher_foreground"
+        android:contentDescription="TODO" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
