@@ -30,6 +30,8 @@ public class UserActivity extends AppCompatActivity {
         password = findViewById(R.id.button2);
         logOut=findViewById(R.id.logOut);
         name.requestFocus();
+        String Username = PrefUtils.getUser(this);
+        name.setText(Username);
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(name, InputMethodManager.SHOW_IMPLICIT);
