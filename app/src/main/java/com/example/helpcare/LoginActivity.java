@@ -81,11 +81,21 @@ public class LoginActivity extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Login.setClickable(false);
                 if(emptyChecker()) {
                     val(Name.getText().toString(), Password.getText().toString());
-                    ProgressDialog dialog = ProgressDialog.show(LoginActivity.this, "",
+                    final ProgressDialog dialog = ProgressDialog.show(LoginActivity.this, "",
                             "ČEKANJE...", true);
-                    timerDelayRemoveDialog(30,dialog);
+                    Runnable progressRunnable = new Runnable() {
+                        @Override
+                        public void run() {
+                            dialog.cancel();
+                        }
+                    };
+
+                    Handler pdCanceller = new Handler();
+                    pdCanceller.postDelayed(progressRunnable, 2000);
+                    Login.setClickable(true);
                 }
             }
         });
@@ -144,17 +154,7 @@ public class LoginActivity extends AppCompatActivity {
             Password.setError("UNESITE LOZINKU");
             return false;
         }
-
             return true;
-
-
-    }
-    public void timerDelayRemoveDialog(long time, final Dialog d){
-        new Handler().postDelayed(new Runnable() {
-            public void run() {
-                d.dismiss();
-            }
-        }, time);
     }
 }
 

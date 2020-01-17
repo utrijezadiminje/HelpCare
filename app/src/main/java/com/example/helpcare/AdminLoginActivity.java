@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -75,7 +76,22 @@ public class AdminLoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                val(name.getText().toString(),password.getText().toString());
+                login.setClickable(false);
+                if(emptyChecker()) {
+
+                    val(name.getText().toString(),password.getText().toString());
+                    final ProgressDialog dialog = ProgressDialog.show(AdminLoginActivity.this, "",
+                            "ČEKANJE...", true);
+                    Runnable progressRunnable = new Runnable() {
+                        @Override
+                        public void run() {
+                            dialog.cancel();
+                        }
+                    };
+                    Handler pdCanceller = new Handler();
+                    pdCanceller.postDelayed(progressRunnable, 2000);
+                    login.setClickable(true);
+                }
             }
         });
     }
@@ -89,5 +105,17 @@ public class AdminLoginActivity extends AppCompatActivity {
     public void onBackPressed(){
         Intent intent = new Intent(AdminLoginActivity.this,LoginActivity.class);
         startActivity(intent);
+    }
+    private boolean emptyChecker()
+    {
+        if(name.getText().toString().trim().equalsIgnoreCase("")){
+            name.setError("UNESITE KORISNIČKO IME");
+            return false;
+        }
+        if(password.getText().toString().trim().equalsIgnoreCase("")){
+            password.setError("UNESITE LOZINKU");
+            return false;
+        }
+        return true;
     }
 }
