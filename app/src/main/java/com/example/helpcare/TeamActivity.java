@@ -66,7 +66,6 @@ public class TeamActivity extends AppCompatActivity {
             public void onClick(View view) {
             String btntxt=button.getText().toString();
             if(btntxt.equals(nadji)) {
-                //ako trazi tim
                 button.setText(izadji);
                 button.setBackgroundResource(R.drawable.dugmetaraaccent);
             }
@@ -77,10 +76,8 @@ public class TeamActivity extends AppCompatActivity {
                 builder.setPositiveButton("DA", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //ako izlazi
                         button.setText(nadji);
                         button.setBackgroundResource(R.drawable.dugmetara);
-
                     }
                 });
                 builder.setNegativeButton("NE", new DialogInterface.OnClickListener() {

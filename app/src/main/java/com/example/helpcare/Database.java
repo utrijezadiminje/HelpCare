@@ -44,6 +44,8 @@ class Database extends AsyncTask<String,Void,String> {
         String adminl_url = "https://webdatabaseandroid.000webhostapp.com/adminl.php";
         String adminr_url = "https://webdatabaseandroid.000webhostapp.com/adminr.php";
         String useru_url = "https://webdatabaseandroid.000webhostapp.com/useru.php";
+        String find_team_1 = "https://webdatabaseandroid.000webhostapp.com/user_find_i.php";
+        String find_team_2 = "https://webdatabaseandroid.000webhostapp.com/user_find_u.php";
 
         if(cmd.equals("login")) {
             try {
@@ -273,6 +275,43 @@ class Database extends AsyncTask<String,Void,String> {
 
                 String line = "";
                 while((line = bufferedReader.readLine()) != null) rezultat += line;
+
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+
+                return rezultat;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if(cmd.equals("find")) {
+            try {
+                String username = params[1];
+
+                URL url = new URL(find_team_1);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+
+                String post_data = URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8");
+
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+
+                String line = "";
+                while ((line = bufferedReader.readLine()) != null) rezultat += line;
 
                 bufferedReader.close();
                 inputStream.close();
