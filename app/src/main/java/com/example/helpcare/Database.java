@@ -327,7 +327,7 @@ class Database extends AsyncTask<String,Void,String> {
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         } else if(rezultat.equals("Ptrueu")) {
-            CharSequence text = "KORISNICKO IME JE PROMENJENO";
+            CharSequence text = "KORISNIČKO IME JE PROMENJENO";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
@@ -337,12 +337,12 @@ class Database extends AsyncTask<String,Void,String> {
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         } else if(rezultat.equals("falseu")) {
-            CharSequence text = "KORISNICKO IME NIJE PROMENJENA";
+            CharSequence text = "KORISNIČKO IME NIJE PROMENJENO";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         } else if(rezultat.equals("falsepostoji")) {
-            CharSequence text = "KORISNICKO IME POSTOJI";
+            CharSequence text = "KORISNČKO IME POSTOJI";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();

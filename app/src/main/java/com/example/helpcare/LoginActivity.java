@@ -3,10 +3,13 @@ package com.example.helpcare;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -30,7 +33,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Name = findViewById(R.id.etName);
-
         Name.requestFocus();
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(Name, InputMethodManager.SHOW_IMPLICIT);
@@ -81,6 +83,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(emptyChecker()) {
                     val(Name.getText().toString(), Password.getText().toString());
+                    ProgressDialog dialog = ProgressDialog.show(LoginActivity.this, "",
+                            "ČEKANJE...", true);
+                    timerDelayRemoveDialog(30,dialog);
                 }
             }
         });
@@ -143,6 +148,13 @@ public class LoginActivity extends AppCompatActivity {
             return true;
 
 
+    }
+    public void timerDelayRemoveDialog(long time, final Dialog d){
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                d.dismiss();
+            }
+        }, time);
     }
 }
 

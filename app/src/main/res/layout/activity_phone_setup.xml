@@ -18,24 +18,24 @@
 
     <Button
         android:id="@+id/btnPhnChng"
-        android:textColor="#FFFFFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/dugmetara"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/etBroj"
-        app:layout_constraintStart_toStartOf="@+id/etBroj"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etBroj" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="49dp"
         android:layout_height="51dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:contentDescription="TODO"
+        app:layout_constraintBottom_toBottomOf="@+id/etBroj"
         app:layout_constraintEnd_toStartOf="@+id/etBroj"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_tel"
-        android:contentDescription="TODO" />
+        app:layout_constraintTop_toTopOf="@+id/etBroj"
+        app:srcCompat="@drawable/ic_tel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
