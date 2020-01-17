@@ -49,7 +49,10 @@ public class UserActivity extends AppCompatActivity {
                     toast.show();
 
                 } else{
-                    //promeni korisnicko ime
+                    String cmd = "newname";
+                    Database database = new Database(this,getApplicationContext());
+                    database.execute(cmd, User2, User1);
+                    PrefUtils.saveUser(User1, getApplicationContext());
                 }
             }
         });

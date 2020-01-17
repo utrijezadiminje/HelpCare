@@ -43,6 +43,7 @@ class Database extends AsyncTask<String,Void,String> {
         String useri_url = "https://webdatabaseandroid.000webhostapp.com/useri.php";
         String adminl_url = "https://webdatabaseandroid.000webhostapp.com/adminl.php";
         String adminr_url = "https://webdatabaseandroid.000webhostapp.com/adminr.php";
+        String useru_url = "https://webdatabaseandroid.000webhostapp.com/useru.php";
 
         if(cmd.equals("login")) {
             try {
@@ -244,6 +245,45 @@ class Database extends AsyncTask<String,Void,String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else if(cmd.equals("newname")) {
+            try {
+                String username = params[1];
+                String new_name = params[2];
+
+                URL url = new URL(useru_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+
+                String post_data = URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8") + "&"
+                        + URLEncoder.encode("newname", "UTF-8") + "=" + URLEncoder.encode(new_name, "UTF-8");
+
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+
+                String line = "";
+                while((line = bufferedReader.readLine()) != null) rezultat += line;
+
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+
+                return rezultat;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         return rezultat;
@@ -286,8 +326,23 @@ class Database extends AsyncTask<String,Void,String> {
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
-        } else if(rezultat.equals("false")) {
+        } else if(rezultat.equals("Ptrueu")) {
+            CharSequence text = "KORISNICKO IME JE PROMENJENO";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        } else if(rezultat.equals("falsei")) {
             CharSequence text = "LOZINKA NIJE PROMENJENA";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        } else if(rezultat.equals("falseu")) {
+            CharSequence text = "KORISNICKO IME NIJE PROMENJENA";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        } else if(rezultat.equals("falsepostoji")) {
+            CharSequence text = "KORISNICKO IME POSTOJI";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
