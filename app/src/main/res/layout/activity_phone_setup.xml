@@ -35,6 +35,7 @@
         app:layout_constraintEnd_toStartOf="@+id/etBroj"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_tel" />
+        app:srcCompat="@drawable/ic_tel"
+        android:contentDescription="TODO" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
