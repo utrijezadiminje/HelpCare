@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.helpcare.Activities.MainActivity;
+
 public class FirstRunCheck extends AppCompatActivity {
 
 
@@ -14,7 +16,7 @@ public class FirstRunCheck extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if(PrefUtils.getLog(this))
         {
-            Intent intent = new Intent(FirstRunCheck.this,MainActivity.class);
+            Intent intent = new Intent(FirstRunCheck.this, MainActivity.class);
             startActivity(intent);
         }
         else

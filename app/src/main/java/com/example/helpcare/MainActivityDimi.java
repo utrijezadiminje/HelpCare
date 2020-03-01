@@ -3,17 +3,14 @@ package com.example.helpcare;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivityDimi extends AppCompatActivity {
 
     private ImageButton btn1;
     private ImageButton btn2;
@@ -22,23 +19,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         PrefUtils.saveLog(true,this);
-        setContentView(R.layout.activity_main);
-        btn1 = findViewById(R.id.imageButton);
-        btn2 = findViewById(R.id.imageButton2);
+        setContentView(R.layout.home_fragment);
+       /* btn1 = findViewById(R.id.imageButton);
+        btn2 = findViewById(R.id.imageButton2);*/
         btn3 = findViewById(R.id.btnZadatak);
         final String zadatak=getString(R.string.task);
         final String empty="";
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,UserActivity.class);
+                Intent intent = new Intent(MainActivityDimi.this,UserActivity.class);
                 startActivity(intent);
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,TeamActivity.class);
+                Intent intent = new Intent(MainActivityDimi.this,TeamActivity.class);
                 startActivity(intent);
             }
         });
@@ -58,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         else
                         {
-                            final ProgressDialog myDialog = new ProgressDialog(MainActivity.this);
+                            final ProgressDialog myDialog = new ProgressDialog(MainActivityDimi.this);
                             myDialog.setMessage("UČITAVANJE...");
                             myDialog.setCancelable(false);
                             myDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "PREKINI", new DialogInterface.OnClickListener() {
@@ -73,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         break;*/
                     case empty:
-                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivityDimi.this);
                         builder.setTitle("PAŽNJA");
                         builder.setMessage("DA LI SIGURNO ŽELITE DA NAPUSTITE TIM?");
                         builder.setPositiveButton("DA", new DialogInterface.OnClickListener() {
@@ -99,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivityDimi.this);
         builder.setTitle("PAŽNJA");
         builder.setMessage("DA LI SIGURNO ŽELITE DA IZAĐETE?");
         builder.setPositiveButton("DA", new DialogInterface.OnClickListener() {

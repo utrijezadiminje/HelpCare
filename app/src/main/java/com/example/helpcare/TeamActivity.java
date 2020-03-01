@@ -173,7 +173,7 @@ public class TeamActivity extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        Intent intent = new Intent(TeamActivity.this,MainActivity.class);
+        Intent intent = new Intent(TeamActivity.this, MainActivityDimi.class);
         startActivity(intent);
     }
 

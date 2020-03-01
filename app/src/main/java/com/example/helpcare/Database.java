@@ -335,7 +335,7 @@ class Database extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String rezultat) {
         if(rezultat.equals("Ltrue")) {
-            Intent intent = new Intent(context, MainActivity.class);
+            Intent intent = new Intent(context, MainActivityDimi.class);
             context.startActivity(intent);
         } else if(rezultat.equals("Lfalseu")) {
             CharSequence text = "KORISNIK NIJE PRONADJEN";
