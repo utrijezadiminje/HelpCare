@@ -17,6 +17,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.example.helpcare.Database;
 import com.example.helpcare.LoginActivity;
 import com.example.helpcare.PasswordActivity;
 import com.example.helpcare.PrefUtils;
@@ -28,7 +30,7 @@ import androidx.fragment.app.Fragment;
 
 public class ProfileFragment extends Fragment {
 
-    private EditText name;
+    private TextView name;
     private Button password;
     private TextView logOut;
     private Button changeUsername;
@@ -40,24 +42,23 @@ public class ProfileFragment extends Fragment {
         View view=inflater.inflate(R.layout.activity_user, container, false);
 
 
-        name=view.findViewById(R.id.editText);
+        name=view.findViewById(R.id.tvUsername);
         password = view.findViewById(R.id.button2);
         logOut=view.findViewById(R.id.logOut);
         name.requestFocus();
 
-        String Username = PrefUtils.getUser(getContext());
-        name.setText(Username);
+        updateUsername();
 
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
         InputMethodManager imm = (InputMethodManager )getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         changeUsername=view.findViewById(R.id.button);
 
         final String changeUser=changeUsername.getText().toString();
-        imm.showSoftInput(name, InputMethodManager.SHOW_IMPLICIT);
+
         changeUsername.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String User1 = name.getText().toString();
+               /* String User1 = name.getText().toString();
                 String User2 = PrefUtils.getUser(getContext());
                 if (User1.equals(User2)) {
                     CharSequence text = "UPIŠITE NOVO IME";
@@ -67,11 +68,48 @@ public class ProfileFragment extends Fragment {
                 } else{
                     String cmd = "newname";
                   /*  Database database = new Database(this,getApplicationContext());
-                    database.execute(cmd, User2, User1);*/
+                    database.execute(cmd, User2, User1);
                     PrefUtils.saveUser(User1, getContext());
                     InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
                     imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-                }
+                }*/
+
+                LayoutInflater inflater = LayoutInflater.from(getContext());
+                View subView = inflater.inflate(R.layout.dialog_username, null);
+                final EditText subEditText = (EditText) subView.findViewById(R.id.dialogEdText);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Unesite novo korisnicko ime:");
+                builder.setIcon(R.drawable.ic_edit_black_24dp);
+                builder.setView(subView);
+                AlertDialog alertDialog = builder.create();
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String User1 = subEditText.getText().toString();
+                        String User2 = PrefUtils.getUser(getContext());
+
+                        String cmd = "newname";
+                        Database database = new Database(getContext());
+                        database.execute(cmd, User2, User1);
+                        PrefUtils.saveUser(User1, getContext());
+                        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+
+                        updateUsername();
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.show();
+
             }
         });
 
@@ -117,5 +155,11 @@ public class ProfileFragment extends Fragment {
         CharSequence text = "USPEŠNO STE SE IZLOGOVALI";
         Toast toast = Toast.makeText(getContext(), text, Toast.LENGTH_SHORT);
         toast.show();
+    }
+
+    private void updateUsername()
+    {
+        String Username = PrefUtils.getUser(getContext());
+        name.setText(Username);
     }
 }

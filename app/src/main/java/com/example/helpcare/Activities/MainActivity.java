@@ -3,6 +3,7 @@ package com.example.helpcare.Activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import com.example.helpcare.Database;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
                 getSupportFragmentManager()
                         .beginTransaction()
+                        .setCustomAnimations(R.anim.fade_in,R.anim.fade_out)
                         .replace(R.id.frame,selected)
                         .addToBackStack(null)
                         .commit();

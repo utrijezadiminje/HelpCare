@@ -19,18 +19,18 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-class Database extends AsyncTask<String,Void,String> {
+public class Database extends AsyncTask<String,Void,String> {
     String rezultat = "";
 
     Context context;
 
     AlertDialog alertDialog;
 
-    Database(Context ctx) {
+    public Database(Context ctx) {
         context = ctx;
     }
 
-    Database(View.OnClickListener onClickListener, Context ctx) {
+    public Database(View.OnClickListener onClickListener, Context ctx) {
         context = ctx;
     }
 

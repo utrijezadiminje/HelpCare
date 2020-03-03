@@ -20,7 +20,7 @@ import android.widget.Toast;
 
 public class UserActivity extends AppCompatActivity {
 
-    private EditText name;
+    private TextView name;
     private Button password;
     private TextView logOut;
     private Button changeUsername;
@@ -30,7 +30,7 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        name=findViewById(R.id.editText);
+        name=findViewById(R.id.tvUsername);
         password = findViewById(R.id.button2);
         logOut=findViewById(R.id.logOut);
         name.requestFocus();
@@ -101,6 +101,7 @@ public class UserActivity extends AppCompatActivity {
         PrefUtils.saveLog(false,this);
         Intent intent = new Intent(UserActivity.this,LoginActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         CharSequence text = "USPEŠNO STE SE IZLOGOVALI";
         Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
         toast.show();
