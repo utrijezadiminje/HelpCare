@@ -19,6 +19,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.helpcare.Activities.MainActivity;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText Name;
@@ -88,6 +90,10 @@ public class LoginActivity extends AppCompatActivity {
                     Runnable progressRunnable = new Runnable() {
                         @Override
                         public void run() {
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                            finish();
                             dialog.cancel();
                         }
                     };

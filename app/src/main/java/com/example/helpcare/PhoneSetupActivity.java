@@ -52,11 +52,11 @@ public class PhoneSetupActivity extends AppCompatActivity {
         }
     });
     }
-    @Override
+   /* @Override
     public void onBackPressed(){
         Intent intent = new Intent(PhoneSetupActivity.this,TeamActivity.class);
         startActivity(intent);
-    }
+    }*/
 
 
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AdminLoginActivity"
-    android:background="@drawable/admingrad">
+    android:background="@drawable/login">
 
     <EditText
         android:id="@+id/admin"
@@ -38,7 +38,7 @@
         android:id="@+id/logIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/dugmetaraaccent"
+        android:background="@drawable/round_button"
         android:text=""
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,7 +52,7 @@
         android:layout_width="58dp"
         android:layout_height="18dp"
         android:text="PRIKAŽI"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

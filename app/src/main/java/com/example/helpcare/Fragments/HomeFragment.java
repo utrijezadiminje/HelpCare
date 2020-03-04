@@ -1,7 +1,10 @@
 package com.example.helpcare.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +25,12 @@ public class HomeFragment extends Fragment {
 
         View view=inflater.inflate(R.layout.home_fragment, container, false);
 
+        SharedPreferences sharedPreferences=getActivity().getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        boolean check=sharedPreferences.getBoolean("check",false);
+        boolean open=sharedPreferences.getBoolean("open",false);
+        Log.d("nav",check+" ");
+        if(open)
+            openFragmet();
 
         task=view.findViewById(R.id.btnZadatak);
 
@@ -29,23 +38,36 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Runnable progressRunnable = new Runnable() {
-                    @Override
-                    public void run() {
-                          getActivity().getSupportFragmentManager()
-                          .beginTransaction()
-                          .setCustomAnimations(R.anim.fade_in,R.anim.fade_out)
-                          .replace(R.id.taskFrame,new TaskFragment())
-                                  .commit();
-                    }
-                };
+                openFragmet();
 
-                Handler pdCanceller = new Handler();
-                pdCanceller.postDelayed(progressRunnable, 600);
+                SharedPreferences sharedPreferences=getActivity().getSharedPreferences("preferences", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor=sharedPreferences.edit();
 
+                editor.putBoolean("open",true);
+                editor.putBoolean("check",true);
+                editor.commit();
             }
         });
         return view;
+    }
+
+    private void openFragmet()
+    {
+
+        Runnable progressRunnable = new Runnable() {
+            @Override
+            public void run() {
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .setCustomAnimations(R.anim.fade_in,R.anim.fade_out)
+                        .replace(R.id.taskFrame,new TaskFragment())
+                        .addToBackStack(null)
+                        .commit();
+            }
+        };
+
+        Handler pdCanceller = new Handler();
+        pdCanceller.postDelayed(progressRunnable, 300);
     }
 
 }

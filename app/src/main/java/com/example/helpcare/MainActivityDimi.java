@@ -25,20 +25,20 @@ public class MainActivityDimi extends AppCompatActivity {
         btn3 = findViewById(R.id.btnZadatak);
         final String zadatak=getString(R.string.task);
         final String empty="";
-        btn1.setOnClickListener(new View.OnClickListener() {
+/*        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivityDimi.this,UserActivity.class);
                 startActivity(intent);
             }
-        });
-        btn2.setOnClickListener(new View.OnClickListener() {
+        });*/
+       /* btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivityDimi.this,TeamActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -18,7 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class TeamActivity extends AppCompatActivity {
+/*public class TeamActivity extends AppCompatActivity {
 
     private static final int REQUEST_CALL = 1;
     private static final String TAG = "TeamActivity";
@@ -27,10 +27,10 @@ public class TeamActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_team);
-        ImageView iv1 = findViewById(R.id.tel1);
-        ImageView iv2 = findViewById(R.id.tel2);
-        iv1.setClickable(true);
-        iv2.setClickable(true);
+       // ImageView iv1 = findViewById(R.id.tel1);
+       // ImageView iv2 = findViewById(R.id.tel2);
+       // iv1.setClickable(true);
+       // iv2.setClickable(true);
         final Button button=findViewById(R.id.btnUI);
         final String broj1 = "+381604145650";
         final String broj2 = "+381691491011";
@@ -38,32 +38,32 @@ public class TeamActivity extends AppCompatActivity {
         final String izadji = "IZAĐI IZ TIMA";
         final String prekini = "PREKINI POTRAGU";
 
-        ImageView menjaj = findViewById(R.id.imgBrojPromeni);
+       ImageView menjaj = findViewById(R.id.imageView);
         button.setText(nadji);
         super.onCreate(savedInstanceState);
-        iv1.setClickable(true);
-        iv2.setClickable(true);
+     //  iv1.setClickable(true);
+       // iv2.setClickable(true);
         menjaj.setClickable(true);
-        iv1.setOnClickListener(new View.OnClickListener() {
-            @Override
+      //*  iv1.setOnClickListener(new View.OnClickListener() {
+          /*  @Override
             public void onClick(View view) {
              makePhoneCall(broj1);
             }
-        });
-        iv2.setOnClickListener(new View.OnClickListener() {
+        }//
+     // /* iv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
              makePhoneCall(broj2);
             }
-        });
-        menjaj.setOnClickListener(new View.OnClickListener() {
+        });*/
+      /*  menjaj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(TeamActivity.this,PhoneSetupActivity.class);
                 startActivity(intent);
             }
-        });
-        button.setOnClickListener(new View.OnClickListener() {
+        });*/
+      /*  button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
             String btntxt=button.getText().toString();
@@ -112,7 +112,7 @@ public class TeamActivity extends AppCompatActivity {
                     dialog.show();
                     button.setText(nadji);
                     break;
-            }
+            }*/
             /*if(btntxt.equals(nadji)) {
                 String cmd = "find";
                 String username = PrefUtils.getUser(getApplicationContext());
@@ -139,7 +139,7 @@ public class TeamActivity extends AppCompatActivity {
                 });
                 AlertDialog dialog = builder.create();
                 dialog.show();
-                }*/
+                }
             }
         });
 
@@ -177,4 +177,4 @@ public class TeamActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-}
+}*/
